@@ -1,10 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/models/category_model.dart';
+import 'package:news_app/widgets/category_card.dart';
+import 'package:news_app/widgets/news_container.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({
     super.key,
   });
-
+  final List<CategoryModel> cards = const [
+    CategoryModel(image: "assets/images/bis.jpeg", categoryName: "Manar"),
+    CategoryModel(image: "assets/images/bis.jpeg", categoryName: "Manar"),
+    CategoryModel(image: "assets/images/bis.jpeg", categoryName: "Manar"),
+    CategoryModel(image: "assets/images/bis.jpeg", categoryName: "Manar"),
+  ];
+  final List<CategoryModel> containers = const [
+    CategoryModel(image: "assets/images/bis.jpeg", categoryName: "Manar"),
+    CategoryModel(image: "assets/images/bis.jpeg", categoryName: "Manar"),
+    CategoryModel(image: "assets/images/bis.jpeg", categoryName: "Manar"),
+    CategoryModel(image: "assets/images/bis.jpeg", categoryName: "Manar"),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,105 +53,29 @@ class HomePage extends StatelessWidget {
           children: [
             // Giving the ListView a fixed height
             SizedBox(
-              height: 100,
-              // Fixed height for ListView
-              child: ListView(
-                scrollDirection: Axis.horizontal, // Scroll direction horizontal
-                children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      image: const DecorationImage(
-                        image: AssetImage("assets/images/bis.jpeg"),
-                        fit: BoxFit.fill,
-                      ),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    margin: const EdgeInsets.all(8),
-                    height: 100,
-                    width: 200,
-                  ),
-                  Container(
-                    alignment: Alignment.center,
-                    child: Text(
-                      "Mannar",
-                      style: TextStyle(
-                        fontWeight: FontWeight.w700,
-                        fontSize: 18,
-                      ),
-                    ),
-                    decoration: BoxDecoration(
-                      image: const DecorationImage(
-                        image: AssetImage("assets/images/bis.jpeg"),
-                        fit: BoxFit.fill,
-                      ),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    margin: const EdgeInsets.all(8),
-                    height: 100,
-                    width: 200,
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                      image: const DecorationImage(
-                        image: AssetImage("assets/images/bis.jpeg"),
-                        fit: BoxFit.fill,
-                      ),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    margin: const EdgeInsets.all(8),
-                    height: 100,
-                    width: 200,
-                  ),
-                ],
-              ),
-            ),
+                height: 100,
+                // Fixed height for ListView
+                child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: cards.length,
+                    itemBuilder: (context, index) {
+                      return CategoryCard(
+                        category: cards[index],
+                      );
+                    })),
             const SizedBox(
               height: 16,
             ),
             Expanded(
               child: SizedBox(
-                child: ListView(
-                  scrollDirection: Axis.vertical,
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        image: const DecorationImage(
-                          image: AssetImage("assets/images/technology.jpeg"),
-                          fit: BoxFit.cover,
-                        ),
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      margin: const EdgeInsets.all(8),
-                      height: 200,
-                      width: double.infinity,
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        image: const DecorationImage(
-                          image: AssetImage("assets/images/technology.jpeg"),
-                          fit: BoxFit.fill,
-                        ),
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      margin: const EdgeInsets.all(8),
-                      height: 200,
-                      width: double.infinity,
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        image: const DecorationImage(
-                          image: AssetImage("assets/images/technology.jpeg"),
-                          fit: BoxFit.fill,
-                        ),
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      margin: const EdgeInsets.all(8),
-                      height: 200,
-                      width: double.infinity,
-                    ),
-                  ],
-                ),
-              ),
+                  child: ListView.builder(
+                      scrollDirection: Axis.vertical,
+                      itemCount: containers.length,
+                      itemBuilder: (context, index) {
+                        return NewsContainer(
+                          category: containers[index],
+                        );
+                      })),
             )
           ],
         ),
