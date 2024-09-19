@@ -1,24 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/models/category_model.dart';
-import 'package:news_app/widgets/category_card.dart';
-import 'package:news_app/widgets/news_container.dart';
+import 'package:news_app/widgets/category_list_view.dart';
+import 'package:news_app/widgets/news_list_view.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({
     super.key,
   });
-  final List<CategoryModel> cards = const [
-    CategoryModel(image: "assets/images/bis.jpeg", categoryName: "Manar"),
-    CategoryModel(image: "assets/images/bis.jpeg", categoryName: "Manar"),
-    CategoryModel(image: "assets/images/bis.jpeg", categoryName: "Manar"),
-    CategoryModel(image: "assets/images/bis.jpeg", categoryName: "Manar"),
-  ];
-  final List<CategoryModel> containers = const [
-    CategoryModel(image: "assets/images/bis.jpeg", categoryName: "Manar"),
-    CategoryModel(image: "assets/images/bis.jpeg", categoryName: "Manar"),
-    CategoryModel(image: "assets/images/bis.jpeg", categoryName: "Manar"),
-    CategoryModel(image: "assets/images/bis.jpeg", categoryName: "Manar"),
-  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,35 +36,16 @@ class HomePage extends StatelessWidget {
           ),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
+      body: const Padding(
+        padding: EdgeInsets.symmetric(horizontal: 16),
         child: Column(
           children: [
-            // Giving the ListView a fixed height
+            CategoriesListView(),
             SizedBox(
-                height: 100,
-                // Fixed height for ListView
-                child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: cards.length,
-                    itemBuilder: (context, index) {
-                      return CategoryCard(
-                        category: cards[index],
-                      );
-                    })),
-            const SizedBox(
-              height: 16,
+              height: 24,
             ),
             Expanded(
-              child: SizedBox(
-                  child: ListView.builder(
-                      scrollDirection: Axis.vertical,
-                      itemCount: containers.length,
-                      itemBuilder: (context, index) {
-                        return NewsContainer(
-                          category: containers[index],
-                        );
-                      })),
+              child: NewsListView(),
             )
           ],
         ),
