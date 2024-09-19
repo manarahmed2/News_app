@@ -38,7 +38,20 @@ class HomePage extends StatelessWidget {
       ),
       body: const Padding(
         padding: EdgeInsets.symmetric(horizontal: 16),
-        child: Column(
+        child: CustomScrollView(
+          slivers: [
+            SliverToBoxAdapter(child: CategoriesListView()),
+            SliverToBoxAdapter(
+              child: SizedBox(
+                height: 24,
+              ),
+            ),
+            SliverToBoxAdapter(
+              child: NewsListView(),
+            )
+          ],
+        ),
+        /*  child: Column(
           children: [
             CategoriesListView(),
             SizedBox(
@@ -48,7 +61,7 @@ class HomePage extends StatelessWidget {
               child: NewsListView(),
             )
           ],
-        ),
+        ),*/
       ),
     );
   }

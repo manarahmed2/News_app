@@ -10,40 +10,41 @@ class NewsListView extends StatelessWidget {
     ArticleModel(
         image: "assets/images/bis.jpeg",
         title:
-            "sdjfklffffffffffffffffffffffffffffffffffffffffertyyyyyyyyyyyyyyyyyv bksa.labbbbbbbbbbbvbhhhhhhhhhh",
+            " As global concerns about climate change grow, many countries and companies have begun investing heavily in green technology, which focuses on reducing environmental impact and enhancing resource sustainability. Technologies such as solar, wind, and electric transportation are experiencing an unprecedented boom, with expectations that they will become an essential part of people’s daily lives by 2024.",
         subTitle:
-            "heuTIWVNFJUGIHurghwovguriofi8WIVHIRHFheuTIWVNFJUGIHurghwovguriofi8WIVHIRHF"),
+            "Green Technology to Lead the Shift to a Sustainable Future in 2024"),
     ArticleModel(
         image: "assets/images/bis.jpeg",
         title:
-            "sdjfklffffffffffffffffffffffffffffffffffffffffertyyyyyyyyyyyyyyyyyv bksa.labbbbbbbbbbbvbhhhhhhhhhh",
+            "As global concerns about climate change grow, many countries and companies have begun investing heavily in green technology, which focuses on reducing environmental impact and enhancing resource sustainability. Technologies such as solar, wind, and electric transportation are experiencing an unprecedented boom, with expectations that they will become an essential part of people’s daily lives by 2024.",
         subTitle:
-            "heuTIWVNFJUGIHurghwovguriofi8WIVHIRHFheuTIWVNFJUGIHurghwovguriofi8WIVHIRHF"),
+            "Green Technology to Lead the Shift to a Sustainable Future in 2024"),
     ArticleModel(
         image: "assets/images/bis.jpeg",
         title:
-            "sdjfklffffffffffffffffffffffffffffffffffffffffertyyyyyyyyyyyyyyyyyv bksa.labbbbbbbbbbbvbhhhhhhhhhh",
+            "As global concerns about climate change grow, many countries and companies have begun investing heavily in green technology, which focuses on reducing environmental impact and enhancing resource sustainability. Technologies such as solar, wind, and electric transportation are experiencing an unprecedented boom, with expectations that they will become an essential part of people’s daily lives by 2024.",
         subTitle:
-            "heuTIWVNFJUGIHurghwovguriofi8WIVHIRHFheuTIWVNFJUGIHurghwovguriofi8WIVHIRHF"),
+            "Green Technology to Lead the Shift to a Sustainable Future in 2024"),
     ArticleModel(
         image: "assets/images/bis.jpeg",
         title:
-            "sdjfklffffffffffffffffffffffffffffffffffffffffertyyyyyyyyyyyyyyyyyv bksa.labbbbbbbbbbbvbhhhhhhhhhh",
+            "As global concerns about climate change grow, many countries and companies have begun investing heavily in green technology, which focuses on reducing environmental impact and enhancing resource sustainability. Technologies such as solar, wind, and electric transportation are experiencing an unprecedented boom, with expectations that they will become an essential part of people’s daily lives by 2024.",
         subTitle:
-            "heuTIWVNFJUGIHurghwovguriofi8WIVHIRHFheuTIWVNFJUGIHurghwovguriofi8WIVHIRHF"),
+            "Green Technology to Lead the Shift to a Sustainable Future in 2024"),
     ArticleModel(
         image: "assets/images/bis.jpeg",
         title:
-            "sdjfklffffffffffffffffffffffffffffffffffffffffertyyyyyyyyyyyyyyyyyv bksa.labbbbbbbbbbbvbhhhhhhhhhh",
+            "As global concerns about climate change grow, many countries and companies have begun investing heavily in green technology, which focuses on reducing environmental impact and enhancing resource sustainability. Technologies such as solar, wind, and electric transportation are experiencing an unprecedented boom, with expectations that they will become an essential part of people’s daily lives by 2024.",
         subTitle:
-            "heuTIWVNFJUGIHurghwovguriofi8WIVHIRHFheuTIWVNFJUGIHurghwovguriofi8WIVHIRHF")
+            "Green Technology to Lead the Shift to a Sustainable Future in 2024")
   ];
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       child: ListView.builder(
-        physics: const BouncingScrollPhysics(),
+        shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
         scrollDirection: Axis.vertical,
         itemCount: news.length,
         itemBuilder: (context, index) {
