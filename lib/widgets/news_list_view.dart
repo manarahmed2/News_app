@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/models/article_model.dart';
-import 'package:news_app/models/category_model.dart';
 import 'package:news_app/widgets/news_tile.dart';
 
 class NewsListView extends StatelessWidget {
@@ -41,19 +40,13 @@ class NewsListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      child: ListView.builder(
-        shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(),
-        scrollDirection: Axis.vertical,
-        itemCount: news.length,
-        itemBuilder: (context, index) {
-          return Padding(
-            padding: const EdgeInsets.only(bottom: 22),
-            child: NewsTile(articleModel: news[index]),
-          );
-        },
-      ),
-    );
+    return SliverList(
+        delegate: SliverChildBuilderDelegate(childCount: news.length,
+            (context, index) {
+      return Padding(
+        padding: const EdgeInsets.only(bottom: 16),
+        child: NewsTile(articleModel: news[index]),
+      );
+    }));
   }
 }

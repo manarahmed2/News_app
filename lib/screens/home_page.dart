@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/models/category_model.dart';
 import 'package:news_app/widgets/category_list_view.dart';
 import 'package:news_app/widgets/news_list_view.dart';
 
@@ -46,9 +45,7 @@ class HomePage extends StatelessWidget {
                 height: 24,
               ),
             ),
-            SliverToBoxAdapter(
-              child: NewsListView(),
-            )
+            NewsListView(),
           ],
         ),
         /*  child: Column(
