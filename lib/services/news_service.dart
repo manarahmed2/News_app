@@ -8,13 +8,12 @@ class NewsService {
 
   Future<List<ArticleModel>> getNews() async {
     Response response = await dio.get(
-        'https://newsapi.org/v2/top-headlines?apiKey=8840025c16be45269b99b02fe8e22baa&country=us&category=general');
+        "https://newsapi.org/v2/top-headlines?apiKey=8840025c16be45269b99b02fe8e22baa&country=us&category=general");
 
-    Map<String, dynamic> jsonData = response.data; //خزنت البيانات
+    Map<String, dynamic> jsonData = response.data;
+    List<dynamic> articles = jsonData['articles'];
 
-    List<dynamic> articles = jsonData["articles"];
-
-    List<ArticleModel> articleList = [];
+    List<ArticleModel> articlesList = [];
 
     for (var article in articles) {
       ArticleModel articleModel = ArticleModel(
@@ -22,8 +21,8 @@ class NewsService {
         title: article['title'],
         subTitle: article['description'],
       );
-      articleList.add(articleModel);
+      articlesList.add(articleModel);
     }
-    return articleList;
+    return articlesList;
   }
 }

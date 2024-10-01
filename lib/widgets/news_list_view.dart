@@ -1,52 +1,46 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:news_app/models/article_model.dart';
+import 'package:news_app/services/news_service.dart';
 import 'package:news_app/widgets/news_tile.dart';
 
-class NewsListView extends StatelessWidget {
+class NewsListView extends StatefulWidget {
   const NewsListView({super.key});
 
-  final List<ArticleModel> news = const [
-    ArticleModel(
-        image: "assets/images/bis.jpeg",
-        title:
-            " As global concerns about climate change grow, many countries and companies have begun investing heavily in green technology, which focuses on reducing environmental impact and enhancing resource sustainability. Technologies such as solar, wind, and electric transportation are experiencing an unprecedented boom, with expectations that they will become an essential part of people’s daily lives by 2024.",
-        subTitle:
-            "Green Technology to Lead the Shift to a Sustainable Future in 2024"),
-    ArticleModel(
-        image: "assets/images/bis.jpeg",
-        title:
-            "As global concerns about climate change grow, many countries and companies have begun investing heavily in green technology, which focuses on reducing environmental impact and enhancing resource sustainability. Technologies such as solar, wind, and electric transportation are experiencing an unprecedented boom, with expectations that they will become an essential part of people’s daily lives by 2024.",
-        subTitle:
-            "Green Technology to Lead the Shift to a Sustainable Future in 2024"),
-    ArticleModel(
-        image: "assets/images/bis.jpeg",
-        title:
-            "As global concerns about climate change grow, many countries and companies have begun investing heavily in green technology, which focuses on reducing environmental impact and enhancing resource sustainability. Technologies such as solar, wind, and electric transportation are experiencing an unprecedented boom, with expectations that they will become an essential part of people’s daily lives by 2024.",
-        subTitle:
-            "Green Technology to Lead the Shift to a Sustainable Future in 2024"),
-    ArticleModel(
-        image: "assets/images/bis.jpeg",
-        title:
-            "As global concerns about climate change grow, many countries and companies have begun investing heavily in green technology, which focuses on reducing environmental impact and enhancing resource sustainability. Technologies such as solar, wind, and electric transportation are experiencing an unprecedented boom, with expectations that they will become an essential part of people’s daily lives by 2024.",
-        subTitle:
-            "Green Technology to Lead the Shift to a Sustainable Future in 2024"),
-    ArticleModel(
-        image: "assets/images/bis.jpeg",
-        title:
-            "As global concerns about climate change grow, many countries and companies have begun investing heavily in green technology, which focuses on reducing environmental impact and enhancing resource sustainability. Technologies such as solar, wind, and electric transportation are experiencing an unprecedented boom, with expectations that they will become an essential part of people’s daily lives by 2024.",
-        subTitle:
-            "Green Technology to Lead the Shift to a Sustainable Future in 2024")
-  ];
+  @override
+  State<NewsListView> createState() => _NewsListViewState();
+}
+
+class _NewsListViewState extends State<NewsListView> {
+  List<ArticleModel> articles = [];
+  bool isLoading = true;
+
+  @override
+  void initState() {
+    getGeneralNews();
+    super.initState();
+  }
+
+  Future<void> getGeneralNews() async {
+    articles = await NewsService(dio: Dio()).getNews();
+    isLoading = false;
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
-    return SliverList(
-        delegate: SliverChildBuilderDelegate(childCount: news.length,
-            (context, index) {
-      return Padding(
-        padding: const EdgeInsets.only(bottom: 16),
-        child: NewsTile(articleModel: news[index]),
-      );
-    }));
+    return isLoading
+        ? const SliverToBoxAdapter(
+            child: Center(child: CircularProgressIndicator()))
+        : SliverList(
+            delegate: SliverChildBuilderDelegate(childCount: articles.length,
+                (context, index) {
+            return Padding(
+              padding: const EdgeInsets.only(bottom: 16),
+              child: NewsTile(
+                articleModel: articles[index],
+              ),
+            );
+          }));
   }
 }
