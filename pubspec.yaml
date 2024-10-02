@@ -13,6 +13,7 @@ dependencies:
 
   cupertino_icons: ^1.0.8
   dio: ^5.7.0
+  webview_flutter: ^4.9.0
 
 
 dev_dependencies:
