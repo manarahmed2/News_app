@@ -7,7 +7,7 @@ import 'package:news_app/widgets/news_tile.dart';
 class NewsListView extends StatelessWidget {
   final List<ArticleModel> articles;
 
-  NewsListView({super.key, required this.articles});
+  const NewsListView({super.key, required this.articles});
 
   @override
   Widget build(BuildContext context) {
